@@ -13,6 +13,12 @@ VERIFY_TOKEN = os.environ.get("VERIFY_TOKEN")
 
 WHATSAPP_API_BASE = "https://graph.facebook.com/v19.0"
 
+# Supported media message types grouped by category
+AUDIO_TYPES = {"audio", "voice"}
+IMAGE_TYPES = {"image"}
+VIDEO_TYPES = {"video"}
+ALL_MEDIA_TYPES = AUDIO_TYPES | IMAGE_TYPES | VIDEO_TYPES
+
 # Track users who have already received the greeting (in-memory; resets on restart)
 greeted_users: set[str] = set()
 
@@ -22,6 +28,10 @@ greeted_users: set[str] = set()
 # ---------------------------------------------------------------------------
 
 def _auth_headers() -> dict:
+    return {"Authorization": f"Bearer {ACCESS_TOKEN}"}
+
+
+def _json_headers() -> dict:
     return {
         "Authorization": f"Bearer {ACCESS_TOKEN}",
         "Content-Type": "application/json",
@@ -37,23 +47,22 @@ def send_whatsapp_message(to: str, body: str) -> dict:
         "type": "text",
         "text": {"body": body},
     }
-    response = requests.post(url, headers=_auth_headers(), json=payload, timeout=15)
+    response = requests.post(url, headers=_json_headers(), json=payload, timeout=15)
     response.raise_for_status()
     logger.info("Message sent to %s", to)
     return response.json()
 
 
-def download_audio(media_id: str) -> bytes:
+def download_media(media_id: str) -> bytes:
     """
-    Download an audio file from the WhatsApp Cloud API.
+    Download any media file from the WhatsApp Cloud API.
 
     Steps:
-    1. Retrieve the temporary media URL using the media ID.
+    1. Resolve the temporary media URL using the media ID.
     2. Stream-download the binary content with the Bearer token.
     """
-    headers = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
+    headers = _auth_headers()
 
-    # Step 1 – resolve media URL
     meta_resp = requests.get(
         f"{WHATSAPP_API_BASE}/{media_id}",
         headers=headers,
@@ -65,26 +74,24 @@ def download_audio(media_id: str) -> bytes:
     if not media_url:
         raise ValueError(f"Could not resolve media URL for media_id={media_id}")
 
-    # Step 2 – download binary content
-    audio_resp = requests.get(media_url, headers=headers, timeout=60)
-    audio_resp.raise_for_status()
-    logger.info("Downloaded %d bytes for media_id=%s", len(audio_resp.content), media_id)
-    return audio_resp.content
+    media_resp = requests.get(media_url, headers=headers, timeout=60)
+    media_resp.raise_for_status()
+    logger.info("Downloaded %d bytes for media_id=%s", len(media_resp.content), media_id)
+    return media_resp.content
 
 
 # ---------------------------------------------------------------------------
-# Deepfake analysis
+# Deepfake analysis placeholders
 # ---------------------------------------------------------------------------
 
-def analyze_deepfake(audio_bytes: bytes) -> dict:
+def analyze_audio(audio_bytes: bytes) -> dict:
     """
-    PLACEHOLDER – send audio to a deepfake detection API and return a result dict.
+    PLACEHOLDER – detect AI-generated voice from audio bytes.
 
-    Replace the body of this function with your chosen provider, e.g.:
+    Replace this body with your chosen provider, e.g.:
 
     ┌─────────────────────────────────────────────────────────────────────────┐
     │  UncovAI  (https://uncovai.com)                                         │
-    │  ──────────────────────────────────────────────────────────────────────  │
     │  DEEPFAKE_API_KEY = os.environ.get("DEEPFAKE_API_KEY")                  │
     │  resp = requests.post(                                                   │
     │      "https://api.uncovai.com/v1/detect",                               │
@@ -100,7 +107,6 @@ def analyze_deepfake(audio_bytes: bytes) -> dict:
     │  }                                                                       │
     ├─────────────────────────────────────────────────────────────────────────┤
     │  Reality Defender  (https://realitydefender.com)                        │
-    │  ──────────────────────────────────────────────────────────────────────  │
     │  resp = requests.post(                                                   │
     │      "https://api.realitydefender.com/v1/audio/analyze",               │
     │      headers={"Authorization": f"Bearer {DEEPFAKE_API_KEY}"},           │
@@ -108,66 +114,144 @@ def analyze_deepfake(audio_bytes: bytes) -> dict:
     │      timeout=60,                                                         │
     │  )                                                                       │
     │  data = resp.json()                                                      │
-    │  trust = data["authenticity_score"]   # 0.0–1.0                         │
-    │  return {                                                                 │
-    │      "trust_score": trust,                                               │
-    │      "is_deepfake": trust < 0.5,                                        │
-    │      "confidence": data["confidence"],                                   │
-    │  }                                                                       │
+    │  trust = data["authenticity_score"]                                      │
+    │  return {"trust_score": trust, "is_deepfake": trust < 0.5,              │
+    │          "confidence": data["confidence"]}                               │
     └─────────────────────────────────────────────────────────────────────────┘
 
     Returns:
-        dict with keys:
-            trust_score  – float 0.0–1.0  (1.0 = fully trusted, 0.0 = definitely fake)
-            is_deepfake  – bool
-            confidence   – float 0.0–1.0
+        dict: trust_score (0.0–1.0), is_deepfake (bool), confidence (0.0–1.0)
     """
-    # ------------------------------------------------------------------ #
-    # SIMULATED RESPONSE – remove once a real API is wired up             #
-    # ------------------------------------------------------------------ #
-    logger.info("analyze_deepfake called with %d bytes (placeholder mode)", len(audio_bytes))
-    return {
-        "trust_score": 0.18,
-        "is_deepfake": True,
-        "confidence": 0.91,
-    }
-    # ------------------------------------------------------------------ #
+    logger.info("analyze_audio called with %d bytes (placeholder)", len(audio_bytes))
+    return {"trust_score": 0.18, "is_deepfake": True, "confidence": 0.91}
 
 
-def build_trust_reply(result: dict) -> str:
-    """Format a user-friendly reply message based on the deepfake analysis result."""
+def analyze_image(image_bytes: bytes) -> dict:
+    """
+    PLACEHOLDER – detect AI-generated or manipulated images.
+
+    Replace this body with your chosen provider, e.g.:
+
+    ┌─────────────────────────────────────────────────────────────────────────┐
+    │  Hive Moderation  (https://hivemoderation.com)                          │
+    │  DEEPFAKE_API_KEY = os.environ.get("DEEPFAKE_API_KEY")                  │
+    │  resp = requests.post(                                                   │
+    │      "https://api.thehive.ai/api/v2/task/sync",                         │
+    │      headers={"Authorization": f"Token {DEEPFAKE_API_KEY}"},            │
+    │      files={"image": image_bytes},                                       │
+    │      timeout=60,                                                         │
+    │  )                                                                       │
+    │  score = resp.json()["status"][0]["response"]["output"][0]              │
+    │           ["classes"][0]["score"]  # ai_generated probability            │
+    │  return {"trust_score": 1.0 - score, "is_deepfake": score > 0.5,       │
+    │          "confidence": score}                                            │
+    ├─────────────────────────────────────────────────────────────────────────┤
+    │  Reality Defender  (https://realitydefender.com)                        │
+    │  resp = requests.post(                                                   │
+    │      "https://api.realitydefender.com/v1/image/analyze",               │
+    │      headers={"Authorization": f"Bearer {DEEPFAKE_API_KEY}"},           │
+    │      files={"image": image_bytes},                                       │
+    │      timeout=60,                                                         │
+    │  )                                                                       │
+    │  data = resp.json()                                                      │
+    │  trust = data["authenticity_score"]                                      │
+    │  return {"trust_score": trust, "is_deepfake": trust < 0.5,              │
+    │          "confidence": data["confidence"]}                               │
+    └─────────────────────────────────────────────────────────────────────────┘
+
+    Returns:
+        dict: trust_score (0.0–1.0), is_deepfake (bool), confidence (0.0–1.0)
+    """
+    logger.info("analyze_image called with %d bytes (placeholder)", len(image_bytes))
+    return {"trust_score": 0.22, "is_deepfake": True, "confidence": 0.87}
+
+
+def analyze_video(video_bytes: bytes) -> dict:
+    """
+    PLACEHOLDER – detect AI-generated or face-swapped video.
+
+    Replace this body with your chosen provider, e.g.:
+
+    ┌─────────────────────────────────────────────────────────────────────────┐
+    │  Reality Defender  (https://realitydefender.com)                        │
+    │  DEEPFAKE_API_KEY = os.environ.get("DEEPFAKE_API_KEY")                  │
+    │  resp = requests.post(                                                   │
+    │      "https://api.realitydefender.com/v1/video/analyze",               │
+    │      headers={"Authorization": f"Bearer {DEEPFAKE_API_KEY}"},           │
+    │      files={"video": video_bytes},                                       │
+    │      timeout=120,                                                        │
+    │  )                                                                       │
+    │  data = resp.json()                                                      │
+    │  trust = data["authenticity_score"]                                      │
+    │  return {"trust_score": trust, "is_deepfake": trust < 0.5,              │
+    │          "confidence": data["confidence"]}                               │
+    ├─────────────────────────────────────────────────────────────────────────┤
+    │  Sensity AI  (https://sensity.ai)                                       │
+    │  resp = requests.post(                                                   │
+    │      "https://api.sensity.ai/v1/detect/video",                          │
+    │      headers={"Authorization": f"Bearer {DEEPFAKE_API_KEY}"},           │
+    │      files={"video": video_bytes},                                       │
+    │      timeout=120,                                                        │
+    │  )                                                                       │
+    │  data = resp.json()                                                      │
+    │  return {"trust_score": 1.0 - data["score"], "is_deepfake": data["fake"]│
+    │          "confidence": data["confidence"]}                               │
+    └─────────────────────────────────────────────────────────────────────────┘
+
+    Returns:
+        dict: trust_score (0.0–1.0), is_deepfake (bool), confidence (0.0–1.0)
+    """
+    logger.info("analyze_video called with %d bytes (placeholder)", len(video_bytes))
+    return {"trust_score": 0.14, "is_deepfake": True, "confidence": 0.94}
+
+
+# ---------------------------------------------------------------------------
+# Reply formatting
+# ---------------------------------------------------------------------------
+
+MEDIA_LABELS = {
+    "audio": "voice note",
+    "voice": "voice note",
+    "image": "image",
+    "video": "video",
+}
+
+
+def build_trust_reply(result: dict, media_type: str) -> str:
+    """Format a user-friendly Trust Score reply tailored to the media type."""
     trust_score: float = result["trust_score"]
     is_deepfake: bool = result["is_deepfake"]
     confidence: float = result["confidence"]
 
     score_pct = int(trust_score * 100)
     conf_pct = int(confidence * 100)
+    label = MEDIA_LABELS.get(media_type, "media file")
 
     if is_deepfake or trust_score < 0.40:
         return (
-            "🚨 *DEEPFAKE DETECTED – HIGH RISK*\n\n"
+            f"🚨 *DEEPFAKE DETECTED – HIGH RISK*\n\n"
             f"🔴 Trust Score: {score_pct}%\n"
             f"📊 Detection Confidence: {conf_pct}%\n\n"
-            "This voice note shows strong signs of being *AI-generated*.\n\n"
-            "⚠️ *Do NOT* act on instructions or requests made in this audio.\n"
-            "This is likely a *scam attempt*. Please report it and stay safe.\n\n"
+            f"This {label} shows strong signs of being *AI-generated or manipulated*.\n\n"
+            f"⚠️ *Do NOT* act on instructions or requests made in this {label}.\n"
+            f"This is likely a *scam attempt*. Please report it and stay safe.\n\n"
             "_— TrustGuard SA_"
         )
     elif trust_score < 0.65:
         return (
-            "⚠️ *SUSPICIOUS AUDIO – PROCEED WITH CAUTION*\n\n"
+            f"⚠️ *SUSPICIOUS {label.upper()} – PROCEED WITH CAUTION*\n\n"
             f"🟡 Trust Score: {score_pct}%\n"
             f"📊 Detection Confidence: {conf_pct}%\n\n"
-            "This voice note has characteristics that *may indicate AI generation*.\n\n"
-            "Please verify the sender through a separate, trusted channel before acting.\n\n"
+            f"This {label} has characteristics that *may indicate AI manipulation*.\n\n"
+            f"Please verify the sender through a separate, trusted channel before acting.\n\n"
             "_— TrustGuard SA_"
         )
     else:
         return (
-            "✅ *AUDIO APPEARS AUTHENTIC*\n\n"
+            f"✅ *{label.upper()} APPEARS AUTHENTIC*\n\n"
             f"🟢 Trust Score: {score_pct}%\n"
             f"📊 Detection Confidence: {conf_pct}%\n\n"
-            "This voice note does *not* appear to be AI-generated.\n\n"
+            f"This {label} does *not* appear to be AI-generated or manipulated.\n\n"
             "As always, stay vigilant about unsolicited requests involving money or personal information.\n\n"
             "_— TrustGuard SA_"
         )
@@ -179,10 +263,7 @@ def build_trust_reply(result: dict) -> str:
 
 @app.route("/webhook", methods=["GET"])
 def verify_webhook():
-    """
-    Handle Meta's webhook verification challenge.
-    Meta sends hub.mode, hub.verify_token, and hub.challenge as query params.
-    """
+    """Handle Meta's webhook verification challenge."""
     mode = request.args.get("hub.mode")
     token = request.args.get("hub.verify_token")
     challenge = request.args.get("hub.challenge")
@@ -200,11 +281,11 @@ def receive_message():
     """
     Receive and process incoming WhatsApp messages.
 
-    Message flow:
-    1. Parse the webhook payload.
-    2. Greet new users on first contact.
-    3. If the message is audio/voice: download → analyse → reply with Trust Score.
-    4. If the message is text: prompt the user to send a voice note.
+    Supported media:
+    - voice / audio  → AI voice detection
+    - image          → AI image / face-swap detection
+    - video          → AI video / deepfake detection
+    - text           → prompt user to send media
     """
     data = request.get_json(silent=True) or {}
 
@@ -214,7 +295,6 @@ def receive_message():
         value = changes["value"]
 
         if "messages" not in value:
-            # Delivery receipts, status updates, etc. – nothing to process
             return jsonify({"status": "ok"}), 200
 
         message = value["messages"][0]
@@ -230,34 +310,58 @@ def receive_message():
                 sender,
                 (
                     "👋 Welcome to *TrustGuard SA*.\n\n"
-                    "Send or forward a suspicious voice note here to verify "
-                    "if it is an AI-generated scam."
+                    "Send or forward any suspicious media to verify it:\n\n"
+                    "🎙️ *Voice notes* — detect AI-generated voices\n"
+                    "🖼️ *Images* — detect AI-generated or manipulated photos\n"
+                    "🎥 *Videos* — detect deepfake or face-swapped footage\n\n"
+                    "Forward the suspicious media here and we'll give you a Trust Score."
                 ),
             )
-            # If the first message is not audio, stop here (greeting is enough)
-            if msg_type not in ("audio", "voice"):
+            if msg_type not in ALL_MEDIA_TYPES:
                 return jsonify({"status": "ok"}), 200
 
         # ── Audio / voice note ────────────────────────────────────────────
-        if msg_type in ("audio", "voice"):
-            send_whatsapp_message(sender, "🔍 Analysing your voice note… Please wait a moment.")
-
+        if msg_type in AUDIO_TYPES:
+            send_whatsapp_message(sender, "🎙️ Analysing your voice note… Please wait a moment.")
             media_id = message[msg_type]["id"]
-            audio_bytes = download_audio(media_id)
-            result = analyze_deepfake(audio_bytes)
-            reply = build_trust_reply(result)
-            send_whatsapp_message(sender, reply)
+            media_bytes = download_media(media_id)
+            result = analyze_audio(media_bytes)
+            send_whatsapp_message(sender, build_trust_reply(result, msg_type))
 
-        # ── Text / other ──────────────────────────────────────────────────
+        # ── Image ─────────────────────────────────────────────────────────
+        elif msg_type in IMAGE_TYPES:
+            send_whatsapp_message(sender, "🖼️ Analysing your image for AI manipulation… Please wait.")
+            media_id = message["image"]["id"]
+            media_bytes = download_media(media_id)
+            result = analyze_image(media_bytes)
+            send_whatsapp_message(sender, build_trust_reply(result, msg_type))
+
+        # ── Video ─────────────────────────────────────────────────────────
+        elif msg_type in VIDEO_TYPES:
+            send_whatsapp_message(sender, "🎥 Analysing your video for deepfakes… This may take a moment.")
+            media_id = message["video"]["id"]
+            media_bytes = download_media(media_id)
+            result = analyze_video(media_bytes)
+            send_whatsapp_message(sender, build_trust_reply(result, msg_type))
+
+        # ── Text / unsupported ────────────────────────────────────────────
         elif msg_type == "text":
             send_whatsapp_message(
                 sender,
-                "Please *send or forward a voice note* to check whether it is AI-generated.",
+                (
+                    "Please *send or forward the suspicious media* you want me to check:\n\n"
+                    "🎙️ Voice note\n"
+                    "🖼️ Image\n"
+                    "🎥 Video"
+                ),
             )
         else:
             send_whatsapp_message(
                 sender,
-                "I can only analyse *voice notes*. Please send or forward a suspicious audio message.",
+                (
+                    "I can analyse *voice notes*, *images*, and *videos* for AI manipulation.\n"
+                    "Please forward the suspicious media here."
+                ),
             )
 
     except (KeyError, IndexError, TypeError) as exc:
@@ -272,7 +376,11 @@ def receive_message():
 
 @app.route("/health", methods=["GET"])
 def health():
-    return jsonify({"status": "ok", "service": "TrustGuard SA"}), 200
+    return jsonify({
+        "status": "ok",
+        "service": "TrustGuard SA",
+        "supported_media": ["audio", "voice", "image", "video"],
+    }), 200
 
 
 # ---------------------------------------------------------------------------
