@@ -1,0 +1,22 @@
+kind = "api"
+previewPath = "/webhook"
+title = "TrustGuard SA"
+version = "1.0.0"
+id = "trustguard-sa"
+
+[[services]]
+localPort = 8000
+name = "TrustGuard SA"
+paths = ["/webhook", "/health"]
+
+[services.development]
+run = "cd trustguard && gunicorn -w 2 -b 0.0.0.0:8000 app:app"
+
+[services.production.run]
+args = ["sh", "-c", "cd trustguard && gunicorn -w 2 -b 0.0.0.0:8000 app:app"]
+
+[services.production.run.env]
+PORT = "8000"
+
+[services.production.health.startup]
+path = "/health"
