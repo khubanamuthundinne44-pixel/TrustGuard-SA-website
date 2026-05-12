@@ -11,3 +11,9 @@ id = "iCQSQv6F6tHff6uspkHWp"
 uri = "file://attached_assets/generated_images/trustguard_sa_app_icon_898d.png"
 type = "image"
 title = "TrustGuard SA App Icon — upload this to Meta"
+
+[[outputs]]
+id = "89LoiowqMucfWvSoJfkeW"
+uri = "file://attached_assets/generated_images/trustguard_sa_icon_transparent.png"
+type = "image"
+title = "TrustGuard SA Icon — transparent background (upload this one)"
