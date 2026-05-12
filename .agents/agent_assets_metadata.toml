@@ -6,6 +6,24 @@ uri = "file://attached_assets/generated_images/trustguard_sa_app_icon_898d.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "8ag8p8L3D7nXexeszJX3n"
+uri = "file://artifacts/trustguard-web/public/whatsapp-analysis.png"
+type = "image"
+title = "WhatsApp bot deepfake detection UI"
+
+[[generated]]
+id = "2aaiYStT2loLzhYJKGgD0"
+uri = "file://artifacts/trustguard-web/public/waveform-analysis.png"
+type = "image"
+title = "Voice waveform AI scanning"
+
+[[generated]]
+id = "Tqmp0UupHrLxEj8bFU7Ae"
+uri = "file://artifacts/trustguard-web/public/media-comparison.png"
+type = "image"
+title = "Real vs fake face comparison"
+
 [[outputs]]
 id = "iCQSQv6F6tHff6uspkHWp"
 uri = "file://attached_assets/generated_images/trustguard_sa_app_icon_898d.png"
