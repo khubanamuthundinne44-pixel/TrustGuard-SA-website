@@ -63,5 +63,6 @@ function proxyToFlask(req: Request, res: Response) {
 
 app.use("/webhook", proxyToFlask);
 app.use("/health", proxyToFlask);
+app.use("/privacy", proxyToFlask);
 
 export default app;
