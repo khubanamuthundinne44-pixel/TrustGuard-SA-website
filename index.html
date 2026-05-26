@@ -323,6 +323,11 @@ nav {
   color: var(--accent);
 }
 
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ===== WAVE ANIMATION ===== */
 .wave-section {
   padding: 20px 0;
@@ -936,417 +941,302 @@ nav {
   text-align: center;
 }
 
-.cta-section .section-h2 {
+.cta-section h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 6vw, 42px);
+  font-weight: 800;
+  color: var(--text);
   margin-bottom: 12px;
+  letter-spacing: -1px;
 }
 
-.cta-section .section-desc {
-  margin-bottom: 36px;
-}
-
-.cta-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
+.cta-section p {
+  font-size: 16px;
+  color: var(--text-light);
+  max-width: 420px;
+  margin: 0 auto 32px;
+  line-height: 1.65;
 }
 
 /* ===== FOOTER ===== */
 footer {
-  padding: 48px 24px 32px;
-  background: #050d0a;
+  padding: 40px 24px;
+  background: var(--green-deep);
   text-align: center;
 }
 
-.footer-logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 20px;
-  font-weight: 800;
-  color: white;
-  margin-bottom: 8px;
-}
-
-.footer-logo span {
-  color: var(--accent);
-}
-
-.footer-tagline {
-  font-size: 13px;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 24px;
-  line-height: 1.6;
-}
-
-.footer-links {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-}
-
-.footer-links a {
+footer p {
   font-size: 13px;
   color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  transition: color 0.2s;
 }
 
-.footer-links a:hover {
+footer a {
   color: var(--accent);
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding-top: 20px;
-  font-size: 12px;
-  color: rgba(255,255,255,0.25);
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: all 0.7s ease;
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
+  text-decoration: none;
 }
 
 /* ===== RESPONSIVE ===== */
-@media (min-width: 768px) {
-  .hero-actions {
-    flex-direction: row;
-    justify-content: center;
-    max-width: none;
-  }
-
-  .btn-wa, .btn-ghost {
-    width: auto;
-  }
-
-  .cta-actions {
-    flex-direction: row;
-    justify-content: center;
-  }
-
+@media (max-width: 480px) {
   .features-grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
   }
-
   .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
+<!-- NAV -->
 <nav>
   <a href="#" class="logo">
     <div class="logo-mark">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <polyline points="9 12 11 14 15 10"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
     </div>
-    <span class="logo-wordmark">TrustGuard <span>SA</span></span>
+    <div class="logo-wordmark">Trust<span>Guard</span> SA</div>
   </a>
-  <a href="#cta" class="nav-btn">Try Free</a>
+  <a href="https://wa.me/27000000000" class="nav-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Try on WhatsApp
+  </a>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-blob-1"></div>
   <div class="hero-blob-2"></div>
-
   <div class="hero-pill">
-    <span class="pulse-dot"></span>
-    Protecting South Africans from digital deception
+    <div class="pulse-dot"></div>
+    Now in Beta — Free for South Africans
   </div>
-
-  <h1>Spot deepfakes in <span class="highlight">seconds.</span><br>Right on WhatsApp.</h1>
-
-  <p class="hero-sub">Forward suspicious voice notes, images, or videos to TrustGuard SA. Our AI instantly analyses the media and tells you if it's real or a scam. No app to download. No account required.</p>
-
+  <h1>Spot Deepfakes<br><span class="highlight">in Seconds</span></h1>
+  <p class="hero-sub">Forward suspicious voice notes, images, or videos to TrustGuard SA on WhatsApp. Our AI instantly tells you if it's real or fake.</p>
   <div class="hero-actions">
-    <a href="https://wa.me/27000000000" class="btn-wa">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Try it on WhatsApp
+    <a href="https://wa.me/27000000000?text=Hi%20TrustGuard" class="btn-wa">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Start Detecting Now
     </a>
-    <a href="#how" class="btn-ghost">See how it works →</a>
+    <a href="#how" class="btn-ghost">
+      See How It Works
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
   </div>
-
   <div class="trust-row">
     <div class="trust-item">
-      <span class="check-circle">✓</span> Free to use
+      <div class="check-circle">✓</div>
+      100% Free
     </div>
     <div class="trust-item">
-      <span class="check-circle">✓</span> 100% Private
+      <div class="check-circle">✓</div>
+      No Sign-up Required
     </div>
     <div class="trust-item">
-      <span class="check-circle">✓</span> Works 24/7
+      <div class="check-circle">✓</div>
+      Instant Results
     </div>
   </div>
 </section>
 
-<!-- ===== WAVE DIVIDER ===== -->
-<section class="wave-section">
+<!-- WAVE -->
+<div class="wave-section">
   <div class="wave-bars">
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
+    <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
   </div>
-</section>
+</div>
 
-<!-- ===== DEMO / PHONE MOCKUP ===== -->
+<!-- DEMO / PHONE MOCKUP -->
 <section class="demo-section" id="demo">
   <div class="section-eyebrow">Live Demo</div>
-  <h2 class="section-h2">See it in action.</h2>
-  <p class="section-desc">Forward any suspicious media to TrustGuard SA on WhatsApp and get an instant AI-powered analysis.</p>
-
+  <h2 class="section-h2">See It In Action</h2>
+  <p class="section-desc">Send a voice note, image, or video to TrustGuard SA and get an instant deepfake analysis report right inside WhatsApp.</p>
   <div class="phone-wrap">
     <div class="phone-glow"></div>
     <div class="phone">
       <div class="phone-notch"></div>
       <div class="phone-header">
         <div class="wa-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#075E54"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </div>
         <div class="wa-info">
           <div class="wa-name">TrustGuard SA</div>
-          <div class="wa-online">Online</div>
+          <div class="wa-online">online</div>
         </div>
       </div>
-
       <div class="chat-area">
-        <!-- Incoming voice message -->
         <div class="chat-msg-in">
+          <div class="chat-text">Hi! I'm TrustGuard SA. Send me any voice note, image, or video and I'll check if it's AI-generated.</div>
+          <div class="chat-time">10:30 AM</div>
+        </div>
+        <div class="chat-msg-out">
           <div class="voice-msg">
             <div class="voice-play">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="voice-waves">
-              <div class="vw"></div>
-              <div class="vw"></div>
-              <div class="vw"></div>
-              <div class="vw"></div>
-              <div class="vw"></div>
-              <div class="vw"></div>
-              <div class="vw"></div>
-              <div class="vw"></div>
-              <div class="vw"></div>
-              <div class="vw"></div>
+              <div class="vw"></div><div class="vw"></div><div class="vw"></div><div class="vw"></div><div class="vw"></div><div class="vw"></div><div class="vw"></div><div class="vw"></div><div class="vw"></div><div class="vw"></div>
             </div>
-            <span style="font-size:10px;color:rgba(255,255,255,0.4);">0:14</span>
           </div>
+          <div class="chat-time">10:31 AM</div>
         </div>
-
-        <!-- Outgoing: Sending -->
-        <div class="chat-msg-out">
-          <div class="chat-text">Analysing media... ⏳</div>
-          <div class="chat-time">10:42 AM ✓✓</div>
+        <div class="chat-msg-in">
+          <div class="chat-text">Analysing your voice note...</div>
+          <div class="chat-time">10:31 AM</div>
         </div>
-
-        <!-- Analysis Report -->
-        <div class="chat-msg-out report-bubble" style="max-width:90%;align-self:flex-end;">
-          <div class="report-header">
-            <div class="report-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="chat-msg-in">
+          <div class="report-bubble">
+            <div class="report-header">
+              <div class="report-icon">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="report-title-text">Deepfake Report</div>
             </div>
-            <span class="report-title-text">Deepfake Analysis Report</span>
+            <div class="score-row">
+              <span class="score-label-small">Authenticity Score</span>
+              <span class="score-value">12% — Likely Fake</span>
+            </div>
+            <div class="score-track">
+              <div class="score-fill-bar"></div>
+            </div>
+            <div class="big-score">⚠ 88% AI-Generated</div>
+            <div class="warning-list">
+              <div class="warning-row"><div class="warning-dot"></div> Inconsistent vocal harmonics detected</div>
+              <div class="warning-row"><div class="warning-dot"></div> Synthetic waveform patterns found</div>
+              <div class="warning-row"><div class="warning-dot"></div> Background noise anomalies present</div>
+            </div>
           </div>
-
-          <div class="score-row">
-            <span class="score-label-small">Trust Score</span>
-            <span class="score-value">12% — Fake</span>
-          </div>
-
-          <div class="score-track">
-            <div class="score-fill-bar"></div>
-          </div>
-
-          <div class="big-score">12%</div>
-
-          <div class="warning-list">
-            <div class="warning-row"><span class="warning-dot"></span> Manipulated Audio</div>
-            <div class="warning-row"><span class="warning-dot"></span> Voice Alteration Detected</div>
-            <div class="warning-row"><span class="warning-dot"></span> Potential Deception</div>
-          </div>
+          <div class="chat-time">10:31 AM</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== STATS ===== -->
+<!-- STATS -->
 <section class="stats-section">
-  <h2 class="stats-heading">Voice scams are rising in SA.</h2>
-  <p class="stats-sub">Don't become a statistic. Stay protected.</p>
-
+  <h2 class="stats-heading">Why South Africans<br>Need TrustGuard</h2>
+  <p class="stats-sub">AI-powered scams are rising fast. Stay protected.</p>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-num">3s</div>
-      <div class="stat-lbl">To clone a voice with AI</div>
+      <div class="stat-num">67%</div>
+      <div class="stat-lbl">of South Africans have encountered a deepfake scam</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">90%</div>
-      <div class="stat-lbl">Of people can't spot a good fake</div>
+      <div class="stat-num">3x</div>
+      <div class="stat-lbl">increase in voice clone attacks in 2025</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">&lt;5s</div>
-      <div class="stat-lbl">For us to detect it</div>
+      <div class="stat-num">&lt;10s</div>
+      <div class="stat-lbl">to get your deepfake analysis report</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">24/7</div>
-      <div class="stat-lbl">Always on, always ready</div>
+      <div class="stat-num">Free</div>
+      <div class="stat-lbl">no credit card, no sign-up, no catch</div>
     </div>
   </div>
 </section>
 
-<!-- ===== HOW IT WORKS ===== -->
+<!-- HOW IT WORKS -->
 <section class="how-section" id="how">
   <div class="section-eyebrow">How It Works</div>
-  <h2 class="section-h2">As simple as sending a text.</h2>
-  <p class="section-desc">No complex dashboards. No sign-up walls. Just forward and get answers.</p>
-
+  <h2 class="section-h2">Three Simple Steps</h2>
+  <p class="section-desc">No apps to install. No accounts to create. Just WhatsApp.</p>
   <div class="steps-list">
     <div class="step-item">
       <div class="step-num-circle">1</div>
       <div class="step-body">
-        <h3>Receive Suspicious Media</h3>
-        <p>Get a voice note, image, or video that seems a bit off or too sensational to be true.</p>
+        <h3>Save Our Number</h3>
+        <p>Save the TrustGuard SA WhatsApp number to your contacts. It takes two seconds.</p>
       </div>
     </div>
     <div class="step-item">
       <div class="step-num-circle">2</div>
       <div class="step-body">
-        <h3>Forward to TrustGuard</h3>
-        <p>Simply tap forward and send it to the TrustGuard SA WhatsApp number.</p>
+        <h3>Forward Suspicious Media</h3>
+        <p>Got a weird voice note, image, or video? Forward it directly to TrustGuard SA on WhatsApp.</p>
       </div>
     </div>
     <div class="step-item">
       <div class="step-num-circle">3</div>
       <div class="step-body">
-        <h3>Get Instant Verdict</h3>
-        <p>In seconds, receive a clear trust score and an explanation of whether it's AI or real.</p>
+        <h3>Get Your Report</h3>
+        <p>Our AI analyses the media and sends back a detailed deepfake detection report in seconds.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FEATURES ===== -->
-<section class="features-section">
-  <div class="section-eyebrow">What We Detect</div>
-  <h2 class="section-h2">We detect the fakes your ears miss.</h2>
-  <p class="section-desc">Our forensic AI models are trained on the latest deepfake generation techniques, specifically tuned for South African accents, context, and environments.</p>
-
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="section-eyebrow">Features</div>
+  <h2 class="section-h2">Built for South Africa</h2>
+  <p class="section-desc">Purpose-built to fight the rising tide of AI scams targeting South Africans.</p>
   <div class="features-grid">
-    <div class="feat-card fade-up">
-      <div class="feat-icon">🎧</div>
-      <h3>Voice Note Clones</h3>
-      <p>Detects AI voice synthesis, vocal splicing, and cloned accents used in extortion and kidnapping scams.</p>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </div>
+      <h3>Voice Note Detection</h3>
+      <p>Detect AI-generated voice clones and synthetic audio in any South African language.</p>
     </div>
-    <div class="feat-card fade-up">
-      <div class="feat-icon">🖼️</div>
-      <h3>Manipulated Images</h3>
-      <p>Identifies AI-generated and Photoshop'd images, analysing pixel-level inconsistencies and unnatural artifacts.</p>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <h3>Image Analysis</h3>
+      <p>Spot manipulated photos, AI-generated faces, and edited images instantly.</p>
     </div>
-    <div class="feat-card fade-up">
-      <div class="feat-icon">🎬</div>
-      <h3>Synthetic Videos</h3>
-      <p>Spots face-swapping, lip-sync anomalies, and completely synthetic videos used for misinformation.</p>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
+      <h3>Video Deepfake Check</h3>
+      <p>Analyse video clips for face swaps, lip sync manipulation, and other deepfake signs.</p>
     </div>
-    <div class="feat-card fade-up">
-      <div class="feat-icon">🛡️</div>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
       <h3>WhatsApp Native</h3>
-      <p>Works entirely inside WhatsApp. No app installs, no accounts, no complicated setup required.</p>
+      <p>Works entirely inside WhatsApp — no downloads, no logins, no friction.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== COMING SOON ===== -->
-<section class="coming-soon">
-  <div class="coming-badge">✨ Coming Soon</div>
-  <h3>Real-time scam call detection.</h3>
-  <p>We're building a layer that flags suspicious incoming calls before you even pick up.</p>
-
+<!-- COMING SOON -->
+<div class="coming-soon">
+  <div class="coming-badge">
+    <div class="pulse-dot"></div>
+    Coming Soon
+  </div>
+  <h3>More Features On The Way</h3>
+  <p>We're constantly improving TrustGuard SA to stay ahead of new AI threats.</p>
   <div class="coming-features">
-    <span class="coming-tag">Scam Call Detection</span>
-    <span class="coming-tag">English, Zulu, Xhosa, Afrikaans</span>
-    <span class="coming-tag">Real-time Alerts</span>
-    <span class="coming-tag">Reverse Image Search</span>
+    <span class="coming-tag">WhatsApp Group Protection</span>
+    <span class="coming-tag">Multi-Language Support</span>
+    <span class="coming-tag">Real-Time Alerts</span>
+    <span class="coming-tag">Business API</span>
+    <span class="coming-tag">Zulu & Xhosa Detection</span>
   </div>
-</section>
+</div>
 
-<!-- ===== CTA ===== -->
-<section class="cta-section" id="cta">
-  <div class="section-eyebrow">Get Protected</div>
-  <h2 class="section-h2">Ready to stop the fakes?</h2>
-  <p class="section-desc">Join thousands of South Africans staying safe from AI-powered scams. Free forever.</p>
-
-  <div class="cta-actions">
-    <a href="https://wa.me/27000000000" class="btn-wa">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.336-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Start on WhatsApp
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to Fight Back<br>Against Deepfakes?</h2>
+  <p>Join thousands of South Africans staying safe from AI scams. It's free and takes 10 seconds to start.</p>
+  <div class="hero-actions" style="margin: 0 auto;">
+    <a href="https://wa.me/27000000000?text=Hi%20TrustGuard" class="btn-wa">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Start on WhatsApp — It's Free
     </a>
-    <a href="#demo" class="btn-ghost">See the demo →</a>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">TrustGuard <span>SA</span></div>
-  <p class="footer-tagline">Protecting South Africans from AI-generated deepfakes, voice clones, and scams — right on WhatsApp.</p>
-
-  <div class="footer-links">
-    <a href="#how">How It Works</a>
-    <a href="#demo">Demo</a>
-    <a href="#cta">Try Free</a>
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 TrustGuard SA. Made with ❤️ in South Africa.
-  </div>
+  <p>&copy; 2026 TrustGuard SA. Built with love for South Africa.</p>
+  <p style="margin-top: 8px;">Deepfake Detection Made Simple</p>
 </footer>
-
-<script>
-// Scroll-triggered fade-in animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
 
 </body>
 </html>
