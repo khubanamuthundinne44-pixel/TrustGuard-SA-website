@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "buildCommand": "cd artifacts/trustguard-web && npm install && npm run build",
+  "outputDirectory": "artifacts/trustguard-web/dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

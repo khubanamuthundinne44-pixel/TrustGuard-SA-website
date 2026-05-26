@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import appIcon from "@assets/generated_images/trustguard_sa_icon_transparent.png";
 import { ShieldCheck, MessageSquare } from "lucide-react";
+
+const appIcon = "/favicon.svg";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,7 +12,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-8 h-8 rounded-md overflow-hidden bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              <img src={appIcon} alt="TrustGuard SA Icon" className="w-6 h-6 object-contain" />
+              <ShieldCheck className="w-5 h-5 text-primary" />
             </div>
             <span className="font-bold font-heading text-lg tracking-tight text-foreground">TrustGuard SA</span>
           </Link>
@@ -19,7 +20,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <nav className="hidden md:flex items-center gap-6">
             <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">How it works</a>
             <a href="#what-we-detect" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">What we detect</a>
-            <a href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">FAQ</a>
           </nav>
           
           <div className="flex items-center gap-4">
@@ -44,7 +44,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div className="col-span-1 md:col-span-2">
               <Link href="/" className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 rounded-md overflow-hidden bg-primary/10 flex items-center justify-center">
-                  <img src={appIcon} alt="TrustGuard SA Icon" className="w-6 h-6 object-contain grayscale opacity-80" />
+                  <ShieldCheck className="w-5 h-5 text-primary" />
                 </div>
                 <span className="font-bold font-heading text-xl text-foreground">TrustGuard SA</span>
               </Link>
@@ -57,7 +57,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li><a href="#how-it-works" className="hover:text-primary transition-colors">How it works</a></li>
                 <li><a href="#what-we-detect" className="hover:text-primary transition-colors">Detection types</a></li>
-                <li><a href="#accuracy" className="hover:text-primary transition-colors">Accuracy</a></li>
                 <li><a href="#privacy" className="hover:text-primary transition-colors">Privacy</a></li>
               </ul>
             </div>

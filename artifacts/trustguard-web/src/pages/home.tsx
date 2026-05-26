@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, MessageSquare, AudioWaveform, Image as ImageIcon, Video, CheckCircle2, AlertTriangle, ArrowRight, Smartphone, Zap, Lock } from "lucide-react";
-import appIcon from "@assets/generated_images/trustguard_sa_icon_transparent.png";
 
 export default function Home() {
   return (
@@ -260,11 +259,10 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden bg-primary text-primary-foreground">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,var(--color-secondary)_0%,transparent_60%)] opacity-10"></div>
-        <div className="absolute inset-0 z-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-20 mix-blend-overlay"></div>
         
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
           <div className="w-20 h-20 mx-auto bg-background rounded-2xl flex items-center justify-center mb-8 shadow-2xl transform -rotate-3">
-            <img src={appIcon} alt="TrustGuard SA Icon" className="w-12 h-12 object-contain" />
+            <ShieldCheck className="w-10 h-10 text-primary" />
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading mb-6">
             Ready to verify?
