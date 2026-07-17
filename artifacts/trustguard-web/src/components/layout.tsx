@@ -14,7 +14,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div className="relative w-8 h-8 rounded-md overflow-hidden bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
               <ShieldCheck className="w-5 h-5 text-primary" />
             </div>
-            <span className="font-bold font-heading text-lg tracking-tight text-foreground">TrustGuard SA</span>
+            <span className="font-bold font-heading text-lg tracking-tight text-foreground"><span className="text-[#25D366]">V</span><span className="text-black">era</span></span>
           </Link>
           
           <nav className="hidden md:flex items-center gap-6">
@@ -46,7 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <div className="w-8 h-8 rounded-md overflow-hidden bg-primary/10 flex items-center justify-center">
                   <ShieldCheck className="w-5 h-5 text-primary" />
                 </div>
-                <span className="font-bold font-heading text-xl text-foreground">TrustGuard SA</span>
+                <span className="font-bold font-heading text-xl text-foreground"><span className="text-[#25D366]">V</span><span className="text-black">era</span></span>
               </Link>
               <p className="text-muted-foreground max-w-sm">
                 The digital guardian in your pocket. Protecting South Africans from AI-generated deepfakes, voice scams, and misinformation, one WhatsApp message at a time.
@@ -70,7 +70,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} TrustGuard SA. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Vera. All rights reserved.</p>
             <div className="flex items-center gap-1">
               <ShieldCheck className="w-4 h-4 text-primary" />
               <span>Built for South Africa</span>

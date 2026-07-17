@@ -22,7 +22,7 @@ export default function Home() {
                 Right on WhatsApp.
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-                Forward suspicious voice notes, images, or videos to TrustGuard SA. Our AI instantly analyzes the media and tells you if it's real or a scam. No app to download. No account required.
+                Forward suspicious voice notes, images, or videos to Vera. Our AI instantly analyzes the media and tells you if it's real or a scam. No app to download. No account required.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -59,7 +59,7 @@ export default function Home() {
             <div className="flex-1 w-full max-w-lg lg:max-w-none relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-[2.5rem] transform rotate-3 scale-[1.02] blur-xl opacity-70"></div>
               <div className="relative rounded-[2rem] border border-border bg-card shadow-2xl overflow-hidden aspect-[4/5] sm:aspect-square lg:aspect-[4/5]">
-                <img src="/whatsapp-analysis.png" alt="TrustGuard SA analyzing a deepfake on WhatsApp" className="w-full h-full object-cover" />
+                <img src="/whatsapp-analysis.png" alt="Vera analyzing a deepfake on WhatsApp" className="w-full h-full object-cover" />
                 
                 {/* Floating elements */}
                 <div className="absolute top-8 -left-6 bg-card border border-border rounded-xl p-3 shadow-xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
@@ -119,7 +119,7 @@ export default function Home() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-6">As simple as sending a text.</h2>
             <p className="text-lg text-muted-foreground">
-              We built TrustGuard SA to live where you already spend your time. No complex dashboards, just instant answers.
+              We built Vera to live where you already spend your time. No complex dashboards, just instant answers.
             </p>
           </div>
           
@@ -144,8 +144,8 @@ export default function Home() {
                 <MessageSquare className="w-10 h-10" />
                 <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-secondary text-secondary-foreground font-bold flex items-center justify-center border-4 border-background">2</div>
               </div>
-              <h3 className="text-xl font-bold mb-3 font-heading">Forward to TrustGuard</h3>
-              <p className="text-muted-foreground">Simply tap forward and send it to the TrustGuard SA WhatsApp number.</p>
+              <h3 className="text-xl font-bold mb-3 font-heading">Forward to Vera</h3>
+              <p className="text-muted-foreground">Simply tap forward and send it to the Vera WhatsApp number.</p>
             </div>
             
             {/* Step 3 */}
@@ -162,7 +162,7 @@ export default function Home() {
           <div className="mt-16 text-center">
             <a href="https://wa.me/15556403201" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="rounded-full h-14 px-8 text-base font-bold bg-foreground hover:bg-foreground/90 text-background">
-                Add TrustGuard to Contacts
+                Add Vera to Contacts
               </Button>
             </a>
           </div>
@@ -268,7 +268,7 @@ export default function Home() {
             Ready to verify?
           </h2>
           <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10">
-            Add TrustGuard SA to your WhatsApp contacts today. The next time you receive something suspicious, you'll know exactly what to do.
+            Add Vera to your WhatsApp contacts today. The next time you receive something suspicious, you'll know exactly what to do.
           </p>
           <a href="https://wa.me/15556403201" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="rounded-full h-16 px-10 text-lg font-bold bg-background text-primary hover:bg-background/90 shadow-2xl hover:scale-105 transition-all duration-300 gap-3">

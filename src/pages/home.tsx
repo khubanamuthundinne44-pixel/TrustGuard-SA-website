@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ShieldCheck, MessageSquare, AudioWaveform, Image as ImageIcon, Video, CheckCircle2, AlertTriangle, ArrowRight, Smartphone, Zap, Lock, Scale, Phone } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ShieldCheck, MessageSquare, AudioWaveform, Image as ImageIcon, Video, CheckCircle2, AlertTriangle, ArrowRight, Smartphone, Zap, Lock } from "lucide-react";
 
 export default function Home() {
   return (
@@ -23,7 +22,7 @@ export default function Home() {
                 Right on WhatsApp.
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-                Forward suspicious voice notes, images, or videos to TrustGuard SA. Our AI instantly analyzes the media and tells you if it's real or a scam. No app to download. No account required.
+                Forward suspicious voice notes, images, or videos to Vera. Our AI instantly analyzes the media and tells you if it's real or a scam. No app to download. No account required.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -60,7 +59,7 @@ export default function Home() {
             <div className="flex-1 w-full max-w-lg lg:max-w-none relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-[2.5rem] transform rotate-3 scale-[1.02] blur-xl opacity-70"></div>
               <div className="relative rounded-[2rem] border border-border bg-card shadow-2xl overflow-hidden aspect-[4/5] sm:aspect-square lg:aspect-[4/5]">
-                <img src="/whatsapp-analysis.png" alt="TrustGuard SA analyzing a deepfake on WhatsApp" className="w-full h-full object-cover" />
+                <img src="/whatsapp-analysis.png" alt="Vera analyzing a deepfake on WhatsApp" className="w-full h-full object-cover" />
                 
                 {/* Floating elements */}
                 <div className="absolute top-8 -left-6 bg-card border border-border rounded-xl p-3 shadow-xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
@@ -120,7 +119,7 @@ export default function Home() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-6">As simple as sending a text.</h2>
             <p className="text-lg text-muted-foreground">
-              We built TrustGuard SA to live where you already spend your time. No complex dashboards, just instant answers.
+              We built Vera to live where you already spend your time. No complex dashboards, just instant answers.
             </p>
           </div>
           
@@ -145,8 +144,8 @@ export default function Home() {
                 <MessageSquare className="w-10 h-10" />
                 <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-secondary text-secondary-foreground font-bold flex items-center justify-center border-4 border-background">2</div>
               </div>
-              <h3 className="text-xl font-bold mb-3 font-heading">Forward to TrustGuard</h3>
-              <p className="text-muted-foreground">Simply tap forward and send it to the TrustGuard SA WhatsApp number.</p>
+              <h3 className="text-xl font-bold mb-3 font-heading">Forward to Vera</h3>
+              <p className="text-muted-foreground">Simply tap forward and send it to the Vera WhatsApp number.</p>
             </div>
             
             {/* Step 3 */}
@@ -163,7 +162,7 @@ export default function Home() {
           <div className="mt-16 text-center">
             <a href="https://wa.me/15556403201" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="rounded-full h-14 px-8 text-base font-bold bg-foreground hover:bg-foreground/90 text-background">
-                Add TrustGuard to Contacts
+                Add Vera to Contacts
               </Button>
             </a>
           </div>
@@ -269,119 +268,7 @@ export default function Home() {
             Ready to verify?
           </h2>
           <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10">
-            Add TrustGuard SA to your WhatsApp contacts today. The next time you receive something suspicious, you'll know exactly what to do.
-          </p>
-          <a href="https://wa.me/15556403201" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="rounded-full h-16 px-10 text-lg font-bold bg-background text-primary hover:bg-background/90 shadow-2xl hover:scale-105 transition-all duration-300 gap-3">
-              <MessageSquare className="w-6 h-6 fill-current" />
-              Try it on WhatsApp
-            </Button>
-          </a>
-          <p className="mt-6 text-sm text-primary-foreground/60">
-            Number: +1 (555) 640-3201
-          </p>
-        </div>
-      </section>
-
-      {/* Legal Accordion Section */}
-      <section className="py-20 md:py-28 bg-muted/50 border-t border-border">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4 border border-primary/20">
-              <Scale className="w-4 h-4" />
-              <span>Legal & Trust</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">We keep it transparent.</h2>
-            <p className="text-lg text-muted-foreground">
-              Your trust is everything to us. Here are the full terms, policies, and contact details.
-            </p>
-          </div>
-
-          <div className="max-w-2xl mx-auto">
-            <Accordion type="single" collapsible className="w-full space-y-3">
-              <AccordionItem value="terms" className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
-                <AccordionTrigger className="px-6 py-5 text-base font-bold text-foreground hover:text-primary transition-colors no-underline">
-                  Terms of Service
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">
-                  <p className="font-semibold text-foreground mb-2">Effective Date: 26 May 2026</p>
-                  <p className="mb-3">By using TrustGuard SA ("the Service"), you agree to these terms. The Service is provided for personal, non-commercial use only.</p>
-                  <p className="font-semibold text-foreground mb-2">You agree NOT to:</p>
-                  <ul className="list-disc pl-5 space-y-1 mb-3">
-                    <li>Analyse media you don't have rights to</li>
-                    <li>Use the Service to harass or harm others</li>
-                    <li>Attempt to hack or reverse-engineer the Service</li>
-                    <li>Use the Service for any illegal purpose</li>
-                  </ul>
-                  <p>TrustGuard SA results are informational only — not legal evidence. Results may not be 100% accurate. We reserve the right to modify or discontinue the service at any time. By using the Service, you confirm you are 18+ or have parental consent.</p>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="privacy" className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
-                <AccordionTrigger className="px-6 py-5 text-base font-bold text-foreground hover:text-primary transition-colors no-underline">
-                  Privacy Policy
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">
-                  <p className="font-semibold text-foreground mb-2">Your privacy is non-negotiable.</p>
-                  <p className="mb-2"><span className="font-semibold text-foreground">What we collect:</span> Only the media you forward for analysis.</p>
-                  <p className="mb-2"><span className="font-semibold text-foreground">What we do with it:</span> We analyse it immediately and delete it permanently within 60 seconds.</p>
-                  <p className="font-semibold text-foreground mb-2">What we NEVER do:</p>
-                  <ul className="list-disc pl-5 space-y-1 mb-3">
-                    <li>Never store your media long-term</li>
-                    <li>Never share it with third parties</li>
-                    <li>Never use it to train AI models</li>
-                    <li>Never sell your data to advertisers</li>
-                    <li>Never log your WhatsApp identity</li>
-                  </ul>
-                  <p><span className="font-semibold text-foreground">POPIA Compliant:</span> TrustGuard SA complies with the Protection of Personal Information Act (POPIA) of South Africa.</p>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="disclaimer" className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
-                <AccordionTrigger className="px-6 py-5 text-base font-bold text-foreground hover:text-primary transition-colors no-underline">
-                  Disclaimer
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">
-                  <p className="mb-3">TrustGuard SA analysis results are for informational purposes only and do not constitute legal advice or evidence.</p>
-                  <p className="mb-3">Our AI detection technology is highly accurate but not infallible. Always exercise your own judgement. False positives and false negatives are possible.</p>
-                  <p>TrustGuard SA is not liable for any decisions made based on analysis results. If you believe you are a victim of fraud, contact SAPS or your financial institution immediately.</p>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="contact" className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
-                <AccordionTrigger className="px-6 py-5 text-base font-bold text-foreground hover:text-primary transition-colors no-underline">
-                  Contact Us
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">
-                  <p className="font-bold text-foreground text-base mb-3">TrustGuard SA</p>
-                  <div className="space-y-2">
-                    <p>📧 hello@trustguardsa.co.za</p>
-                    <p>📧 privacy@trustguardsa.co.za</p>
-                    <p>📧 business@trustguardsa.co.za</p>
-                    <p>💬 WhatsApp: +27 64 833 0653</p>
-                    <p>🌍 Thohoyandou, Limpopo, South Africa</p>
-                  </div>
-                  <p className="mt-4">We aim to respond within 24-48 business hours.</p>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden bg-primary text-primary-foreground">
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,var(--color-secondary)_0%,transparent_60%)] opacity-10"></div>
-        
-        <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
-          <div className="w-20 h-20 mx-auto bg-background rounded-2xl flex items-center justify-center mb-8 shadow-2xl transform -rotate-3">
-            <ShieldCheck className="w-10 h-10 text-primary" />
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading mb-6">
-            Ready to verify?
-          </h2>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10">
-            Add TrustGuard SA to your WhatsApp contacts today. The next time you receive something suspicious, you'll know exactly what to do.
+            Add Vera to your WhatsApp contacts today. The next time you receive something suspicious, you'll know exactly what to do.
           </p>
           <a href="https://wa.me/15556403201" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="rounded-full h-16 px-10 text-lg font-bold bg-background text-primary hover:bg-background/90 shadow-2xl hover:scale-105 transition-all duration-300 gap-3">

@@ -7,7 +7,7 @@ const HTML = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Privacy Policy – TrustGuard SA</title>
+  <title>Privacy Policy – Vera</title>
   <style>
     body{font-family:Arial,sans-serif;max-width:800px;margin:40px auto;padding:0 20px;color:#222;line-height:1.7}
     h1{color:#1a73e8}h2{color:#333;margin-top:32px}
@@ -15,9 +15,9 @@ const HTML = `<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <h1>&#x1F6E1;&#xFE0F; TrustGuard SA &mdash; Privacy Policy</h1>
+  <h1>&#x1F6E1;&#xFE0F; Vera &mdash; Privacy Policy</h1>
   <p><strong>Effective date: 12 May 2026</strong></p>
-  <p>TrustGuard SA ("we","our","the service") is a WhatsApp-based tool that analyses voice notes, images and videos to detect AI-generated or deepfake content. This Privacy Policy explains what data we collect, how we use it, and your rights.</p>
+  <p>Vera ("we","our","the service") is a WhatsApp-based tool that analyses voice notes, images and videos to detect AI-generated or deepfake content. This Privacy Policy explains what data we collect, how we use it, and your rights.</p>
 
   <h2>1. Information We Collect</h2>
   <ul>
@@ -59,7 +59,7 @@ const HTML = `<!DOCTYPE html>
   <h2>9. Changes to This Policy</h2>
   <p>We may update this policy from time to time. The effective date at the top of this page will reflect the latest revision.</p>
 
-  <footer>&copy; 2026 TrustGuard SA. All rights reserved.</footer>
+  <footer>&copy; 2026 Vera. All rights reserved.</footer>
 </body>
 </html>`;
 

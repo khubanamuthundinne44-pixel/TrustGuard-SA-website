@@ -18,10 +18,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "TrustGuard SA"
+args = "Vera"
 
 [[workflows.workflow]]
-name = "TrustGuard SA"
+name = "Vera"
 author = "agent"
 
 [[workflows.workflow.tasks]]
